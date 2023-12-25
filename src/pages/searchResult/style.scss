@@ -1,0 +1,33 @@
+@import "../../styles/global.scss";
+
+.mainContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .title{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        width: 90%;
+        border-bottom: 2px solid $soft-bg;
+    }
+    .innerContainer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        .innerTitle{
+            align-self: flex-start;
+            margin: 10px 0px;
+            padding: 5px;
+            font-size: 1.5rem;
+        }
+        
+    }
+}

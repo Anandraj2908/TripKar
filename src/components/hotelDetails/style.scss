@@ -1,0 +1,86 @@
+@import '../../styles/global.scss';
+
+.hotelDetails {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 3px solid $soft-bg;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  
+    .hotelImage {
+      flex: 0 0 30%;
+  
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        vertical-align: top;
+      }
+    }
+  
+    .hotelInfo {
+      flex: 1;
+      padding: 0px 10px;
+  
+      .hotelName {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+  
+      .hotelCity {
+        color: #666;
+        margin-bottom: 8px;
+      }
+  
+      .hotelPrice {
+        margin-bottom: 12px;
+      }
+  
+      .hotelInfoList {
+        display: flex;
+        flex-wrap: wrap;
+  
+        .hotelInfoItem {
+          background-color: $hover-bg;
+          border-radius: 5px;
+          padding: 5px 10px;
+          margin-right: 8px;
+          margin-bottom: 8px;
+          font-size: 14px;
+        }
+      }
+    }
+    .booking{
+        margin:0px 10px;
+        padding: 0pc 20px;
+        border-left: 3px solid $soft-bg;
+    }
+  
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      .hotelImage {
+        flex: 0 0 100%;
+        margin-bottom: 20px;
+      }
+  
+      .hotelInfo {
+        flex: 0 0 50%;
+        align-self: flex-start;
+      }
+      .booking{
+        flex: 0 0 50%;
+        border-left: none;
+        .formC{
+            display:flex;
+            .bookBtn{
+                height: min-content;
+                align-self: center;
+            }
+        }
+        
+      }
+    }
+  }
+  

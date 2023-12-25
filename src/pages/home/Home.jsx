@@ -12,14 +12,14 @@ const Home = () => {
         <div className='homeContainer'>
           <SearchBanner/>
           <div className='cityCards'>
-            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' cityName='London'/>
-            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' cityName='London'/>
-            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' cityName='London'/>
+            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' title='Mumbai'/>
+            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' title='Delhi'/>
+            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' title='Patna'/>
           </div>
           <div className='cityCards'>
-            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' cityName='London'/>
-            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' cityName='London'/>
-            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' cityName='London'/>
+            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' title='London'/>
+            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' title='London'/>
+            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' title='London'/>
           </div>
         </div>
       </Container>

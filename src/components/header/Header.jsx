@@ -44,8 +44,9 @@ const Header = () => {
     
 
   return (
+    <Container>
     <header className='headerContainer'>
-        <Container>
+        
             <nav className='navbar'>
                 <div className='logo navChild'>TripKar</div>
                 <div className="navChild hamburger">
@@ -71,8 +72,9 @@ const Header = () => {
                     )}
                 </ul>
             </nav>
-        </Container>
+        
     </header>
+    </Container>
   )
 }
 

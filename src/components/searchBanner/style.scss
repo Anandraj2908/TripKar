@@ -1,0 +1,125 @@
+.carousel {
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 40vh;
+    border-radius: 10px;
+    border: #a5a4a444 2px solid;
+    margin: 10px 0px;
+  
+    .carousel-images {
+      display: flex;
+      transition:  0.5s ease;
+      width: calc(100% * 4); /* Adjust as per the number of images */
+      transform: translateX(calc(-100% * var(--slide-index)));
+      
+      .slide {
+        flex: 0 0 100%;
+        transform: translateX(-100%);
+        
+        &.active {
+            transform: translateX(calc(-100% * var(--slide-index)));
+        }
+  
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+          display: block;
+        }
+      }
+    }
+  
+    .prev-btn,
+    .next-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 1;
+  
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+  
+      &.prev-btn {
+        left: 10px;
+      }
+  
+      &.next-btn {
+        right: 10px;
+      }
+    }
+    .searchBar{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border-radius: 10px;
+        border: #a5a4a444 2px solid;
+        transform: translate(-50%, -50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        .searchInput{
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            padding: 10px;
+            font-size: 1.2rem;
+            border-radius: 10px 0px 0px 10px;
+        }
+        .searchBtn{
+            margin: 0px;
+            width: 100px;
+            height: 100%;
+            border: none;
+            outline: none;
+            padding: 10px;
+            font-size: 1.2rem;
+            border-radius: 0px 10px 10px 0px;
+            background-color: #242424;
+            cursor: pointer;
+        }
+        
+    }
+    @media screen and (max-width: 460px){
+        .searchBar{
+            border-radius: 10px;
+            border: #a5a4a444 2px solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            .searchInput{
+                width: 30vw;
+                height: 100%;
+                border: none;
+                outline: none;
+                padding: 10px ;
+                font-size: 1rem;
+                border-radius: 10px 0px 0px 10px;
+            }
+            .searchBtn{
+                margin: 0px;
+                width: 100px;
+                height: 100%;
+                border: none;
+                outline: none;
+                padding: 10px;
+                font-size: 1.2rem;
+                border-radius: 0px 10px 10px 0px;
+                background-color: #242424;
+                cursor: pointer;
+            }
+            
+        }
+    }
+    
+  }
+  

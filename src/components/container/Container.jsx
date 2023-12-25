@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css'
 const Container = ({children}) => {
   return (
-    <div>{children}</div>
+    <div className='contentWrapper'>{children}</div>
   )
 }
 

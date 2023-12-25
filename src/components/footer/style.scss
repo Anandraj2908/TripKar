@@ -1,0 +1,19 @@
+@import "../../styles/variables.scss";
+
+.footer {
+    color: #fff;
+    padding: 20px 0;
+    border-top: $soft-bg 2px solid;
+    margin: 0px 10px;
+  }
+  
+  .footer-content {
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .footer {
+      padding: 15px 0;
+      font-size: 14px;
+    }
+  }

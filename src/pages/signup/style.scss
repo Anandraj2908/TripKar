@@ -1,0 +1,43 @@
+
+.myContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 74vh;
+    margin: 0px 10px;
+    .myCard{
+        border-radius: 10px;
+        border: #a5a4a444 2px solid;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .formContainer{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0px;
+            .error{
+                max-width: 200px;
+                color: rgba(255, 0, 0, 0.511);
+                font-size: 12px;
+            }
+            .myBtn{
+                margin-top: 10px;
+                width: 100%;
+                
+            
+            }
+            
+        }
+        .toNav{
+            margin-top: 10px;
+            .navBtn{
+                color:rgb(0, 102, 255)
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,84 @@
+@import "../../styles/global.scss";
+
+.headerContainer{
+    border: 2px solid #a5a4a444;
+    border-radius: 10px;
+    margin: 20px 10px;
+    .navbar{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        .logo{
+            width: 100px;
+            font-size:x-large;
+            font-weight: bold;
+        }
+        .navItems{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            list-style: none;
+            
+        }
+        @media screen and (max-width: 460px){
+            .menu-btn {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 30px;
+                height: 25px;
+                cursor: pointer;
+            
+                .btn-line {
+                  width: 100%;
+                  height: 3px;
+                  background-color: #fff;
+                  transition: all 0.3s ease;
+                }
+            }
+            
+            .open .btn-line:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+            }
+            
+            .open .btn-line:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .open .btn-line:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .navItems {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: none;
+            
+                &.open {
+                    display: block;
+                }
+            
+                li {
+                  margin-bottom: 10px;
+                }
+            }
+            .navChild{
+                width: 50%;
+            }
+            .hamburger{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: flex-end;
+                
+            }
+            
+            
+        }
+        
+    }   
+}

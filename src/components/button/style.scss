@@ -1,0 +1,14 @@
+@import "../../styles/global.scss";
+.btnC{
+    background-color: $soft-bg;
+    border: 1px solid $main-bg;
+    border-radius: 5px;
+    padding: 5px 5px;
+    margin: 5px 10px;
+    font-size: 16px;
+    color: $main-color;
+    cursor: pointer;
+    &:hover{
+        background-color: $hover-bg;
+    }
+}

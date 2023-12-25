@@ -1,0 +1,77 @@
+import React, {useState} from 'react'
+import {login as authLogin} from '../../store/authSlice'
+import {useDispatch} from 'react-redux'
+import {useForm} from 'react-hook-form'
+import authService from '../../appwrite/auth'
+import {Link,useNavigate} from 'react-router-dom'
+
+import Input from '../../components/input/Input'
+import Button from '../../components/button/Button'
+
+import './style.scss'
+
+const Signup = () => {
+  const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {register, handleSubmit} = useForm()
+    const [error, setError] = useState("");
+
+    const create = async(data) => {
+        setError("")
+        try {
+            const userData = await authService.createAccount(data)
+            if (userData){
+                const userData = await authService.getCurrentUser()
+                if(userData){
+                    dispatch(login(userData));
+                    navigate("/")
+                }
+            }
+        } catch (error) {
+            setError(error.message)
+        }
+    }
+  return (
+    <div className='myContainer'>
+      <div className='myCard'>
+        <h2>Sign Up </h2>
+        
+        <form onSubmit={handleSubmit(create)}>
+            <div className='formContainer'>
+                <Input
+                    label="Full name:"
+                    placeholder="Enter your full name"
+                    {...register("name", {
+                        required: true,
+                    })}
+                />
+                <Input 
+                label="Email"
+                placeholder="Enter your email"
+                type="email"
+                {...register("email",
+                    {required:true,
+                    validate:{
+                        matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
+                        "Email address must be a valid address",
+                    }})
+                }/>
+                <Input
+                label="Password: "
+                type="password"
+                placeholder="Enter your password"
+                {...register("password",{
+                    required:true,
+                })}
+                />
+                {error && <p className='error'>{error}</p>}
+                <Button type="submit" className='myBtn'>Sign Up</Button>
+            </div>
+        </form>
+        <p className='toNav'>Already have an account? <Link to="/login" className='navBtn'>Log In</Link></p>
+      </div>
+    </div>
+  )
+}
+
+export default Signup

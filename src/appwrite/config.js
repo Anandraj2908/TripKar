@@ -4,26 +4,24 @@ import {Client, ID, Databases, Storage, Query} from "appwrite"
 export class Service{
     client = new Client();
     databases;
-    bucket;
     
     constructor(){
         this.client
             .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId);
         this.databases = new Databases(this.client);
-        this.bucket = new Storage(this.client);
     }
 
     
-    //posts
-    async createBooking({hotelName, userId,bookingDate}){
+    //bookings
+    async createBooking(hotelId, userId,bookingDate){
         try{
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteBookingsCollectionId,
                 ID.unique(),
                 {
-                    hotelName,
+                    hotelId,
                     userId,
                     bookingDate
                 }
@@ -59,6 +57,30 @@ export class Service{
             )
         } catch (error) {
             console.log("Get all Bookings error: ",error)
+        }
+    }
+
+    async getHotels(queries){
+        try{
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteHotelsCollectionId,
+                queries
+            )
+        }catch(error){
+            console.log("Get hotels error",error)
+        }
+    }
+
+    async getHotel(hotelId){
+        try{
+            return await this.databases.getDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteHotelsCollectionId,
+                hotelId
+            )
+        }catch(error){
+            console.log("Get hotel error",error)
         }
     }
 

@@ -1,9 +1,55 @@
 import './style.scss'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Input from '../input/Input'
 import Button from '../button/Button'
-const HotelDetails = ({details}) => {
-    const handelSubmit = (e) => {}
+import appwriteAuthService from '../../appwrite/auth'
+import appwriteConfService from '../../appwrite/config'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
+const HotelDetails = ({hotelId, book}) => {
+    
+    const [bookingDate, setBookingDate] = useState("");
+    const [details, setDetails] = useState({
+        name: "",
+        city: "",
+        price: "",
+        hotelInfo: [],
+        featuredImage: ""
+    });
+
+    const userStatus = useSelector(state => state.auth.status);
+    const navigate = useNavigate();
+
+    const [userId, setUserId] = useState("");
+    useEffect(() => {
+        appwriteAuthService.getCurrentUser()
+        .then((user)=> {
+            setUserId(user.$id)
+        })
+        .catch((error) => {
+            console.log("Error",error)
+        })
+
+        appwriteConfService.getHotel(hotelId)
+        .then((hotel) => {
+            setDetails(hotel)
+        })
+        .catch((error) => {
+            console.log("Error",error)
+        })
+    },[])
+
+    const submit = async () => {
+        const booking = await appwriteConfService.createBooking(hotelId, userId, bookingDate);
+        if(booking) {
+            navigate('/mybookings')
+        }
+    }
+    const handelSubmit = (e) => {
+        e.preventDefault();
+        submit()
+    }
   return (
     <div className="hotelDetails">
         <div className="hotelImage">
@@ -12,23 +58,27 @@ const HotelDetails = ({details}) => {
         <div className="hotelInfo">
             <div className="hotelName">{details.name}</div>
             <div className="hotelCity">{details.city}</div>
-            <div className="hotelPrice">Rs.{details.price}/night average</div>
+            {!book && <div className="hotelPrice">Rs.{details.price}/night average</div>}
+            {book &&  <div className="bookingDate">Booking Date: {book}</div>} 
             <div className="hotelInfoList">
                 {details.hotelInfo.map((info, index) => (
                 <div key={index} className="hotelInfoItem">{info}</div>
                 ))}
             </div>
         </div>
-        <div className="booking">
+        {!book && userStatus && 
+            <div className="booking">
             <form onSubmit={handelSubmit} className='formC'>
             <Input
                 label="Booking Date"
-                type="date"    
+                type="date"
+                onChange={(e) => setBookingDate(e.target.value)}    
             />
             <Button type='submit' className="bookBtn">Book Now</Button>
             </form>
             
-        </div>
+            </div>
+        }
     </div>
     
   )

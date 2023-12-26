@@ -13,7 +13,7 @@ const Home = () => {
           <SearchBanner/>
           <div className='cityCards'>
             <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' title='Mumbai'/>
-            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' title='Delhi'/>
+            <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' title='Bangalore'/>
             <CityCard imageSrc='https://images.pexels.com/photos/4873310/pexels-photo-4873310.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' title='Patna'/>
           </div>
           <div className='cityCards'>

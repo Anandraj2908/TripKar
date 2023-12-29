@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux'
 
 const MyBookings = () => {
   const [hotels, setHotels] = useState([]);
-  const userStatus = useSelector(state => state.auth.status);
+  
 
     useEffect(() => {
         appwriteAuthService.getCurrentUser()
@@ -25,8 +25,11 @@ const MyBookings = () => {
         .catch((error) => {
             console.log("Get current user error: ",error)
         }) 
+
+
         
     },[])
+    console.log(hotels)
   
   return (
     <Container>
@@ -35,7 +38,7 @@ const MyBookings = () => {
         <div className='innerContainer'>
           <div className="hotelList">
             { hotels.map((hotel, index) => (
-              <HotelDetails key={index} hotelId={hotel.hotelId} book={hotel.bookingDate} />
+              <HotelDetails key={index} hotelId={hotel.hotelId} book={hotel.bookingDate} bookingId={hotel.$id}/>
             ))}
             </div>
         </div>

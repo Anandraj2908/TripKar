@@ -60,6 +60,20 @@ export class Service{
         }
     }
 
+    async deleteBooking(bookingId){
+        try {
+            await this.databases.deleteDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteBookingsCollectionId,
+                bookingId
+            )
+            return true
+        } catch (error) {
+            console.log("Delete booking Error ",error)
+            return false
+        }
+    }
+
     async getHotels(queries){
         try{
             return await this.databases.listDocuments(

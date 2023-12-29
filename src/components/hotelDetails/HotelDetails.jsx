@@ -7,7 +7,7 @@ import appwriteConfService from '../../appwrite/config'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-const HotelDetails = ({hotelId, book}) => {
+const HotelDetails = ({hotelId, book, bookingId}) => {
     
     const [bookingDate, setBookingDate] = useState("");
     const [details, setDetails] = useState({
@@ -43,12 +43,21 @@ const HotelDetails = ({hotelId, book}) => {
     const submit = async () => {
         const booking = await appwriteConfService.createBooking(hotelId, userId, bookingDate);
         if(booking) {
+            
             navigate('/mybookings')
         }
     }
     const handelSubmit = (e) => {
         e.preventDefault();
         submit()
+    }
+    const cancelBooking = () =>{
+        appwriteConfService.deleteBooking(bookingId).then((status) => {
+            if(status){
+                window.location.reload();
+            }
+        });
+        
     }
   return (
     <div className="hotelDetails">
@@ -72,11 +81,17 @@ const HotelDetails = ({hotelId, book}) => {
             <Input
                 label="Booking Date"
                 type="date"
-                onChange={(e) => setBookingDate(e.target.value)}    
+                onChange={(e) => setBookingDate(e.target.value)}
+                required
             />
             <Button type='submit' className="bookBtn">Book Now</Button>
             </form>
             
+            </div>
+        }
+        {book && userStatus &&
+            <div className="booking" onClick={cancelBooking}>
+                <Button >Cancel Booking</Button>
             </div>
         }
     </div>

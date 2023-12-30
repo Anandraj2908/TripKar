@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux'
 
 const MyBookings = () => {
   const [hotels, setHotels] = useState([]);
-  
 
     useEffect(() => {
         appwriteAuthService.getCurrentUser()
@@ -27,19 +26,20 @@ const MyBookings = () => {
         }) 
 
 
-        
     },[])
-    console.log(hotels)
   
   return (
     <Container>
       <div className='mainContainer'>
         <div className="title">My Bookings</div>
-        <div className='innerContainer'>
+          <div className='innerContainer'>
           <div className="hotelList">
             { hotels.map((hotel, index) => (
               <HotelDetails key={index} hotelId={hotel.hotelId} book={hotel.bookingDate} bookingId={hotel.$id}/>
             ))}
+            {
+              hotels.length === 0 && <div className="noBookings">No Bookings Found</div>
+            }
             </div>
         </div>
       </div>

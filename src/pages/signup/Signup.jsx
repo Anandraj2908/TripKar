@@ -18,6 +18,7 @@ const Signup = () => {
 
     const create = async(data) => {
         setError("")
+        console.log(data)
         try {
             const userData = await authService.createAccount(data)
             if (userData){
@@ -29,6 +30,7 @@ const Signup = () => {
             }
         } catch (error) {
             setError(error.message)
+            console.log(error)
         }
     }
   return (
@@ -41,8 +43,10 @@ const Signup = () => {
                 <Input
                     label="Full name:"
                     placeholder="Enter your full name"
+                    maxLength={40}
                     {...register("name", {
                         required: true,
+                        maxLength: 40
                     })}
                 />
                 <Input 
@@ -51,6 +55,7 @@ const Signup = () => {
                 type="email"
                 {...register("email",
                     {required:true,
+                    maxLength:40,
                     validate:{
                         matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
                         "Email address must be a valid address",

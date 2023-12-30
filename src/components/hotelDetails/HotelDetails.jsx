@@ -4,12 +4,13 @@ import Input from '../input/Input'
 import Button from '../button/Button'
 import appwriteAuthService from '../../appwrite/auth'
 import appwriteConfService from '../../appwrite/config'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const HotelDetails = ({hotelId, book, bookingId}) => {
     
     const [bookingDate, setBookingDate] = useState("");
+
     const [details, setDetails] = useState({
         name: "",
         city: "",
@@ -51,14 +52,18 @@ const HotelDetails = ({hotelId, book, bookingId}) => {
         e.preventDefault();
         submit()
     }
+
+    const [isDeleted, setIsDeleted] = useState(false);
     const cancelBooking = () =>{
         appwriteConfService.deleteBooking(bookingId).then((status) => {
-            if(status){
-                window.location.reload();
+            if(status) {
+                setIsDeleted(true)
             }
         });
         
     }
+    const today = new Date().toISOString().split('T')[0];
+    if(!isDeleted)
   return (
     <div className="hotelDetails">
         <div className="hotelImage">
@@ -83,6 +88,7 @@ const HotelDetails = ({hotelId, book, bookingId}) => {
                 type="date"
                 onChange={(e) => setBookingDate(e.target.value)}
                 required
+                min={today}
             />
             <Button type='submit' className="bookBtn">Book Now</Button>
             </form>
@@ -93,6 +99,10 @@ const HotelDetails = ({hotelId, book, bookingId}) => {
             <div className="booking" onClick={cancelBooking}>
                 <Button >Cancel Booking</Button>
             </div>
+        }
+        {
+            !userStatus &&
+            <NavLink className="booking" to='/login'><Button >Login to Book</Button></NavLink>
         }
     </div>
     

@@ -14,7 +14,7 @@ import MyBookings from './pages/myBokings/MyBookings.jsx'
 import Dashboard from './pages/dashboard/Dashboard.jsx'
 import Login from './pages/login/Login.jsx'
 import Signup from './pages/signup/Signup.jsx'
-
+import AuthLayout from './components/AuthLayout.jsx'
 
 const router = createBrowserRouter([
   {
@@ -35,7 +35,11 @@ const router = createBrowserRouter([
       },
       {
         path:'/mybookings',
-        element:<MyBookings/>
+        element:(
+          <AuthLayout authentication>
+            <MyBookings/>
+          </AuthLayout>
+        )
       },
       {
         path:'/admin',
@@ -43,11 +47,19 @@ const router = createBrowserRouter([
       },
       {
         path:'/login',
-        element:<Login/>
+        element:(
+          <AuthLayout authentication={false}>
+            <Login/>
+          </AuthLayout>
+        )
       },
       {
         path:'/signup',
-        element:<Signup/>
+        element:(
+          <AuthLayout authentication={false}>
+            <Signup/>
+          </AuthLayout>
+        )
       },
       {
         path:'*',

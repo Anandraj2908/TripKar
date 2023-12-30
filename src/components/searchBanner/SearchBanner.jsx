@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {hotel1,hotel2, hotel3, hotel4} from '../../assets/index.js'
+import {hotel1,hotel2, hotel3, banner1} from '../../assets/index.js'
 import hotel5 from '../../assets/hotel5.jpg'
 import Button from '../button/Button'
 
 import './style.scss'
 import { useNavigate } from 'react-router-dom'
 const SearchBanner = () => {
-    const images = [hotel1,hotel2,hotel3,hotel5]
+    const images = [hotel1,hotel2,hotel3,hotel5,banner1]
     const [currentSlide, setCurrentSlide] = useState(0);
     const navigate = useNavigate()
 

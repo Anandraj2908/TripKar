@@ -1,6 +1,5 @@
 import conf from "../conf/conf";
 import { Client, Account, ID } from "appwrite";
-
 //created a class to export, and a constructor so that it initializes whenever an object is created for better code practices
 export class AuthService {
     client = new Client();
@@ -19,12 +18,12 @@ export class AuthService {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if(userAccount){
-                return this.login(email,password)
+                return this.account.createEmailSession(email,password);
             }else{
                 return userAccount
             }
         } catch (error) {
-            throw error;
+            console.log("Create Account Error", error);
         }
     }
 
@@ -33,7 +32,7 @@ export class AuthService {
             return await this.account.createEmailSession(email,password);
         }
         catch(error){
-            throw error;
+            console.log("Login Error", error);
         }
     }
 
@@ -48,7 +47,10 @@ export class AuthService {
 
     async logout(){
         try {
-            await this.account.deleteSessions();
+            const session = await this.account.deleteSessions();
+            if(session)
+            localStorage.removeItem('appwriteSession');
+            return session;
         } catch (error) {
             throw error;
             

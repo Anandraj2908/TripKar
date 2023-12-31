@@ -1,10 +1,11 @@
 .contentWrapper{
     margin: 0px 10px ;
-    .cityCards{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: center;
-        margin: 20px 0px;
+    .homeContainer{
+        .cityCards{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
     }
 }

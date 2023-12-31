@@ -34,6 +34,9 @@ const SearchResult = () => {
             {hotels.map((hotel, index) => (
               <HotelDetails key={index} hotelId={hotel.$id}  />
             ))}
+            {
+              hotels.length === 0 && <div className="noData">No Hotels Found</div>
+            }
             </div>
         </div>
       </div>

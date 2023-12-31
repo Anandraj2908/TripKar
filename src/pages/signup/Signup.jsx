@@ -18,13 +18,12 @@ const Signup = () => {
 
     const create = async(data) => {
         setError("")
-        console.log(data)
         try {
             const userData = await authService.createAccount(data)
             if (userData){
                 const userData = await authService.getCurrentUser()
                 if(userData){
-                    dispatch(login(userData));
+                    dispatch(authLogin(userData));
                     navigate("/")
                 }
             }

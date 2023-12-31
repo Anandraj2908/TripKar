@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './style.scss'
 import Container from '../../components/container/Container'
+
 const Dashboard = () => {
+  
   return (
     <Container >
       <div className="myItems">

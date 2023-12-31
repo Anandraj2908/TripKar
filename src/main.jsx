@@ -36,9 +36,7 @@ const router = createBrowserRouter([
       {
         path:'/mybookings',
         element:(
-          <AuthLayout authentication>
             <MyBookings/>
-          </AuthLayout>
         )
       },
       {

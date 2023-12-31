@@ -1,13 +1,16 @@
-.noBookings{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 63vh;
-    width: 100%;
-    font-size: 2rem;
-    font-weight: 600;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+.hotelList{
+    min-height: 63vh;
+    .noBookings{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 63vh;
+        width: 100%;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 0.2rem;
+        text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    }
 }

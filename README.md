@@ -1,4 +1,4 @@
-# Hotel Booking Website
+# TripKar - Hotel Booking Website
 
 Welcome to our Hotel Booking Website! This platform offers a convenient way to explore and book accommodations.
 

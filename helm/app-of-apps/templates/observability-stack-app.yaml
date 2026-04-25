@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: observability-stack-{{ .Values.environment }}
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: 'https://grafana.github.io/helm-charts'
+    chart: loki-stack
+    targetRevision: 2.9.11
+    helm:
+      values: |
+        grafana:
+          enabled: true
+          service:
+            type: NodePort
+            nodePort: 32003
+        prometheus:
+          enabled: true
+          server:
+            service:
+              type: NodePort
+              nodePort: 32004
+        promtail:
+          enabled: true
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: {{ .Values.environment }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
